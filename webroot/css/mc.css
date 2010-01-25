@@ -1,8 +1,17 @@
 /*header*/
 .pageheader{
 	border-bottom:2px solid #DDDDDD;
-	height:24px;
 	background:#FCFCFC url(../img/pic/header_bg.png) repeat-x scroll 0 100%;min-width:75em;
+}
+.topInput {
+	margin: 20px 0;
+	text-align:center;
+	
+}
+.topInput label{
+	color:red;
+	font-family:comic Sans MS;
+	font-size:2em;
 }
 .pagefooter {
 	background:#BBCCD9 url(../img/pic/bg2.png) repeat-x scroll 0 0;

@@ -10,13 +10,12 @@
 
 	
 		echo $html->meta('icon');
-		echo $html->css('w-r');
-		echo $html->css('w-r-u');
-		echo $html->css('screen');
+		echo $html->css(array('mc','mc-u','screen'));
+
 		//echo $html->css('print');
 		echo '<!--[if IE]>';
 		echo $html->css('ie');
-		echo $html->css('w-r-ie');
+		echo $html->css('mc-ie');
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
@@ -34,40 +33,16 @@
 				<div class="span-24">
 					
 					
-			        <div class="headerData">
-			       		<?php echo date("l dS \of F"); ?>
-			        </div>
-			        <div class="headerWeek">
-			            <?php __('Week'); 
-			            echo ' '.date("W"); ?>
-			        </div>	
+					<div class="topInput" style="">
+						
+						<?php echo  $form->create('User'); ?>
+							<?php echo $form->input('username',array('label'=>'moycontact.ru / ','div'=>false));?>
+						<?php echo $form->end();?>
+					</div>
 	
 	
 	
-			    	<div class="userbox">
-			    		<div class="inner">
-							<ul class="usernav">
-									<?php
-											if ($session->check('Auth.User.username')) {
-												//echo $gravatar->image('a_kondrat@mail.ru',array('default' => 'identicon','size' => 20) );
-												echo '<b>'.$session->read('Auth.User.username').'</b>';
-											}
-									?>
-								<li>
-				    		<?php 		
-				    			if ( $session->check('Auth.User.id') ){
-				    				echo $html->link(__('Logout',true),array('controller'=>'users','action'=>'logout','admin'=>false)).'&nbsp';
-				    			} else {
-				    				echo $html->link(__('Login',true),array('controller'=>'users','action'=>'login')).'&nbsp';
-				    			}
-								?>
-								</li>
-								<li><?php echo $html->link(__('Home',true),array('controller'=>'intervals','action'=>'index')).'&nbsp';?></li>
-			    			<li><?php echo $html->link("Eng",array('lang'=>'en')).'&nbsp';?></li>
-			    			<li><?php echo $html->link("Рус",array('lang'=>'ru')).'&nbsp';?> </li>
-			    		</ul>
-			    		</div>
-			    	</div>
+
 			  </div>
 			</div>
 	</div>
@@ -95,7 +70,7 @@
 		    <div class="span-4 last">
 		        Right sidebar
 		        <hr />
-						<div id="hourstat" style="position:absolute; top:50px;left:5px;width:200px;">hourstat</div>
+						
 						<div id="test1">test1</div>
 						<p class="margin:0;"> Data from app</p>
 						<div id="test2"></div>
@@ -131,6 +106,6 @@
 			  </div>
 			</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>
