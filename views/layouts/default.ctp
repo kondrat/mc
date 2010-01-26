@@ -3,7 +3,7 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php __('pvr:'); ?>
+		<?php __('MC:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -19,7 +19,7 @@
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
-		echo $html->script(array('jquery/jquery-1.3.2.min','jquery/jquery.form','jquery/ui.core','jquery/ui.draggable','common'));
+		echo $html->script(array('jquery/jquery-1.4.1.min','jquery/jquery.form','jquery/ui.core','jquery/ui.draggable','common'));
 
 
 		//echo $javascript->link('dbg/prettyPrint');
@@ -30,21 +30,19 @@
 <body>
 	<div class="pageheader" style="">
 			<div class="container">
-				<div class="span-24">
-					
-					
-					<div class="topInput" style="">
-						
-						<?php echo  $form->create('User'); ?>
-							<?php echo $form->input('username',array('label'=>'moycontact.ru / ','div'=>false));?>
-						<?php echo $form->end();?>
+				<div class="span-24 topInput" style="margin:20px 0;">
+						<div class="span-11 prepend-4">
+							<?php echo  $form->create('User'); ?>
+								<?php echo $form->input('username',array('label'=>'moycontact.ru / ','div'=>false));?>
+							<?php echo $form->end();?>
+						</div>
+						<div class="span-2" style="position:relative;" >
+							<div class="topSearch"><?php echo __('search');?></div>
+						</div>
 					</div>
-	
-	
-	
 
-			  </div>
 			</div>
+			
 	</div>
 	<div class="container showgrid.">
 		    <div class="span-4">
@@ -54,11 +52,6 @@
 		    </div>
 		
 		    <div class="span-16">
-			        <div class="span-7">
-			            <div class="rounded." style="background-color: #ccc; padding-left: 15px;overflow:hidden;">
-
-									</div>
-			      	</div>
 
 		        <div class="span-16 clear last myrr">
 							<div class="fl span-16 last" style="font-weight:bold; position:relative;">
@@ -106,6 +99,31 @@
 			  </div>
 			</div>
 	</div>
+	
+		<script type="text/javascript">
+		//<![CDATA[
+		
+			$(document).ready(function() {
+				$(".project .links").hide().addClass("hidden");
+				$(".project").mouseenter(function() {
+					if ($(".links",this).hasClass("hidden")) {
+						$(".links",this).removeClass("hidden").slideDown("fast");
+						$(this).animate({
+							paddingBottom: "3.5em"
+						}, "fast");
+					}
+				});
+				$(".project").mouseleave(function() {
+					$(".links",this).addClass("hidden").slideUp("fast");
+					$(this).animate({
+							paddingBottom: "1.5em"
+						}, "fast");
+				});
+			});
+		
+		//]]>
+		</script>	
+			
 	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>
