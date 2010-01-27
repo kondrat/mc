@@ -31,7 +31,7 @@
 	<div class="pageheader" style="">
 			<div class="container">
 				<div class="span-24 topInput" style="margin:20px 0;">
-						<div class="span-11 prepend-4">
+						<div class="span-11 prepend-6">
 							<?php echo  $form->create('User'); ?>
 								<?php echo $form->input('username',array('label'=>'moycontact.ru / ','div'=>false));?>
 							<?php echo $form->end();?>
@@ -92,37 +92,13 @@
 					
 			    <div class="span-24">
 			    	<div class="footerNote">
-		      	 work-rest &copy;<?php echo date('Y');?>
+		      	 www.moycontact.ru &copy;<?php echo date('Y');?>
 		      	</div>
 		   		</div>
 		   		
 			  </div>
 			</div>
 	</div>
-	
-		<script type="text/javascript">
-		//<![CDATA[
-		
-			$(document).ready(function() {
-				$(".project .links").hide().addClass("hidden");
-				$(".project").mouseenter(function() {
-					if ($(".links",this).hasClass("hidden")) {
-						$(".links",this).removeClass("hidden").slideDown("fast");
-						$(this).animate({
-							paddingBottom: "3.5em"
-						}, "fast");
-					}
-				});
-				$(".project").mouseleave(function() {
-					$(".links",this).addClass("hidden").slideUp("fast");
-					$(this).animate({
-							paddingBottom: "1.5em"
-						}, "fast");
-				});
-			});
-		
-		//]]>
-		</script>	
 			
 	<?php //echo $this->element('sql_dump'); ?>
 </body>

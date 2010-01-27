@@ -1,7 +1,8 @@
 /*header*/
 .pageheader{
 	border-bottom:6px solid #DDDDDD;
-	background:#FCFCFC url(../img/pic/header_bg.png) repeat-x scroll 0 100%;min-width:75em;
+	background:#FCFCFC url(../img/pic/header_bg.png) repeat-x scroll 0 100%;
+	min-width:75em;
 }
 .topInput {
 	margin: 20px 0;
@@ -10,16 +11,26 @@
 	color:red;
 	font-family:comic Sans MS;
 	font-size:2em;
+	
 }
 .topSearch{
-	background-color:#CCCCCC;
-	color:white;
+	background:transparent url(../img/pic/buttonSearch.png) no-repeat scroll 0 100%;
+	color:#999;
 	cursor:pointer;
 	font-weight:bold;
 	left:-25px;
-	padding:2px 5px;
+	padding:3px 7px;
 	position:absolute;
 	top:11px;
+}
+.onlyTest{
+	background-color:blanchedAlmond;
+	border:1px solid blue;
+	color:goldenRod;
+	font-size:large;
+	font-weight:bold;
+	padding:6px;
+	text-align:center;
 }
 .pagefooter {
 	background:#BBCCD9 url(../img/pic/bg2.png) repeat-x scroll 0 0;
