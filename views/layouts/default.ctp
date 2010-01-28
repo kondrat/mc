@@ -33,11 +33,13 @@
 				<div class="span-24 topInput" style="margin:20px 0;">
 						<div class="span-11 prepend-6">
 							<?php echo  $form->create('User'); ?>
-								<?php echo $form->input('username',array('label'=>'moycontact.ru / ','div'=>false));?>
+								<?php echo $form->input('username',array('label'=>'moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru / ','div'=>false));?>
 							<?php echo $form->end();?>
 						</div>
-						<div class="span-2" style="position:relative;" >
-							<div class="topSearch"><?php echo __('search');?></div>
+						<div class="span-4" style="position:relative;" >
+							<div class="topSearch">
+								<div class="topSearchInner"><?php echo __('Search');?></div>
+							</div>
 						</div>
 					</div>
 

@@ -8,20 +8,27 @@
 	margin: 20px 0;
 }
 .topInput label{
-	color:red;
+	color:darkOrange;
 	font-family:comic Sans MS;
 	font-size:2em;
-	
+	text-shadow:-1px 1px 1px #FFFFFF;
 }
 .topSearch{
-	background:transparent url(../img/pic/buttonSearch.png) no-repeat scroll 0 100%;
+	background:transparent url(../img/pic/buttonSearch-left.png) no-repeat scroll 0 0;
 	color:#999;
 	cursor:pointer;
 	font-weight:bold;
 	left:-25px;
-	padding:3px 7px;
+	padding:0 7px 0 6px;
 	position:absolute;
 	top:11px;
+	height: 23px;
+	text-shadow:-1px 1px 0 white;
+}
+.topSearchInner{
+		background:transparent url(../img/pic/buttonSearch-right.png) no-repeat scroll 100% 0;
+		padding:2px 11px 3px 7px;
+		height:23px;
 }
 .onlyTest{
 	background-color:blanchedAlmond;
