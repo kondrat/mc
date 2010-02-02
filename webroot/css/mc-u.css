@@ -68,7 +68,7 @@ p.quickLoginForPas {
 	margin-left:12em;
 }
 #UserUsername, #UserPassword, #UserPassword1, #UserPassword2,#UserEmail,#UserEmailReset {
-	width: 206px;
+	/*width: 206px;*/
 	margin: 0 0 5px;
 }
 div.input {

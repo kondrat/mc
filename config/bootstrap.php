@@ -48,4 +48,10 @@
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+ 		
+		Configure::write('Languages.default', 'en');
+		$langs = array('ar', 'en', 'fa', 'fr', 'de', 'es', 'pt', 'nl', 'id', 'it', 'ja', 'bg', 'hu', 'pl', 'cz', 'cn', 'ko',
+		       	'ro', 'ms', 'tw', 'ru', 'el', 'tr');
+		sort($langs);
+		Configure::write('Languages.all', $langs);
 ?>
