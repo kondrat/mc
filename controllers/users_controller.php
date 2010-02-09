@@ -40,8 +40,8 @@ class UsersController extends AppController {
 			if ( $this->User->save( $this->data) ) {
 				
     		$this->Session->delete('guestKey');
-    		$this->Cookie->del('IniVars');
-    		$this->Cookie->del('guestKey');				
+    		//$this->Cookie->delete('IniVars');
+    		//$this->Cookie->delete('guestKey');				
 							
 				$a = $this->User->read();
 				$this->Auth->login($a);
@@ -110,8 +110,8 @@ class UsersController extends AppController {
 			if( $this->Auth->login() ) {
 					
     		$this->Session->delete('guestKey');
-    		$this->Cookie->del('IniVars');
-    		$this->Cookie->del('guestKey');
+    		//$this->Cookie->delete('IniVars');
+    		//$this->Cookie->delete('guestKey');
 
 
 					if ($this->referer()=='/') {
@@ -136,7 +136,21 @@ class UsersController extends AppController {
 	}
 
 //--------------------------------------------------------------------	
-	
+    function logout() {
+    	    	
+    		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username');
+    		
+    		$this->Session->delete('guestKey');
+    		$this->Cookie->delete('IniVars');
+    		$this->Cookie->delete('guestKey');
+    		
+    		
+    		
+        $this->Auth->logout();
+        $this->Session->setFlash( $tempUserName, 'default', array('class' => '') );
+        $this->redirect( '/',null,true);        
+    }
+//--------------------------------------------------------------------	
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());

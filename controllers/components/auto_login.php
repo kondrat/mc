@@ -180,7 +180,7 @@ class AutoLoginComponent extends Object {
 	 * @return void
 	 */
 	public function delete() {
-		$this->Cookie->del($this->cookieName);
+		$this->Cookie->delete($this->cookieName);
 	}
 	
 }
