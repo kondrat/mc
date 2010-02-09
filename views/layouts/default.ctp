@@ -3,7 +3,7 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php __('MC:'); ?>
+		<?php __('MoyContact:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -29,8 +29,11 @@
 			<div class="container">
 				<div class="span-24 topInput" style="margin:20px 0;">
 						<div class="span-11 prepend-6">
+							<div style="float:left; margin-right:1em;">
+								<?php echo $html->link('moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+							</div>
 							<?php echo  $form->create('User'); ?>
-								<?php echo $form->input('username',array('label'=>'moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru / ','div'=>false));?>
+								<?php echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop'));?>
 							<?php echo $form->end();?>
 						</div>
 						<div class="span-4" style="position:relative;" >

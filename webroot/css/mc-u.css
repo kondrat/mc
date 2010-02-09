@@ -2,25 +2,27 @@
 .signUpNow {
 	background-color:#9AE4E8;
 	border:3px solid silver;
-	color:#FFFFFF;
 	float:left;
-	font-family:comic Sans MS;
-	font-weight:bold;
 	margin:1em;
-	padding:0.2em 1em;
 	text-shadow:1px 1px 1px gray;
 	cursor:pointer;
 	border-style: dotted;
 }
-
-
-/* ---------------cur work----------------------*/
-.fildsetReg legend {
-	background-color:white;
-	border:3px solid silver;
-	margin:0;
-	padding:0 5px;
+.signUpNow a {
+	color:#FFFFFF;
+	font-family:comic Sans MS;
+	font-weight:bold;
+	font-size:larger;
+	text-decoration:none;
+	padding:0.2em 1em;
+	display:block;
 }
+.signUpNow a:hover {
+	color: gray;
+	text-shadow:1px 1px 1px white;
+}
+/* ---------------cur work----------------------*/
+
 .reg {
 	width:14.5em;
 }
@@ -69,7 +71,7 @@ p.quickLoginForPas {
 /*form classes*/
 
 .inner_page {
-	border: 1px solid #ccc;
+	padding: 20px 0;
 	position: relative;
 	height:1%;
 }
@@ -200,8 +202,7 @@ div.formWrap input.form-error {
 	/*background-image: url(../img/bg.jpg);*/
 	background-color: #eee;
 	border: 1px solid #7f9db9;
-	
-	width: 120px;
+	width: 142px;
 	height: 60px;
 	float: left;
 }

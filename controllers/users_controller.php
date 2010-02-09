@@ -2,7 +2,141 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
+	var $helpers = array('Javascript');
+	var $components = array( 'Security','Cookie','userReg','kcaptcha');
+	var $pageTitle = 'Users data';
+	var $paginate = array('limit' => 5);
+	
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------	
+  function beforeFilter() {
+        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'acoset','aroset','permset','buildAcl');
+          
+        //to Del:
+        //$this->Auth->allowedActions = array('*');
 
+        parent::beforeFilter(); 
+        $this->Auth->autoRedirect = false;
+        
+        // swiching off Security component for ajax call
+			if( isset($this->Security) && $this->RequestHandler->isAjax() ) {
+     			$this->Security->enabled = false; 
+     		}
+    }
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------	
+	function reg() {
+		
+		if($this->Auth->user('id')) {
+			$this->redirect('/',null,true);
+		}
+		
+		$this->pageTitle = __('SignUp',true);
+		
+		if ( !empty($this->data) ) {
+						
+			$this->data['User']['captcha2'] = $this->Session->read('captcha');
+
+			if ( $this->User->save( $this->data) ) {
+				
+    		$this->Session->delete('guestKey');
+    		$this->Cookie->del('IniVars');
+    		$this->Cookie->del('guestKey');				
+							
+				$a = $this->User->read();
+				$this->Auth->login($a);
+				$this->Session->setFlash(__('New user\'s accout has been created',true));
+				$this->redirect(array('controller' => 'intervals','action'=>'index'),null,true);
+         	} else {
+				$this->data['User']['captcha'] = null;
+				$this->Session->setFlash(__('New user\'s accout hasn\'t been created',true) , 'default', array('class' => 'er') );
+			}
+		}
+		
+		
+
+	}	
+//--------------------------------------------------------------------	
+//ajax staff
+	//----------------------------------------------------------------
+		function userNameCheck() {
+
+			$errors = array();
+			Configure::write('debug', 0);
+			$this->autoRender = false;
+			//don't foreget about santization and trimm
+			if (!empty($this->data) && $this->data['User']['username'] != null) {
+				if ($this->RequestHandler->isAjax()) {
+					$this->User->set( $this->data );
+					$errors = $this->User->invalidFields();
+					if($errors == array()) {
+						$type = 1;
+						$errors['username'] = __('Login is free',true);
+					} else {
+						$type = 0;
+					}
+					echo json_encode(array('hi'=> $errors['username'], 'typ'=> $type));
+					
+							Configure::write('debug', 0);
+							$this->autoRender = false;
+				 			exit();						
+						
+				}
+			} else {
+					echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'typ'=> 0));
+					
+							Configure::write('debug', 0);
+							$this->autoRender = false;
+				 			exit();	
+			}		
+		}
+		//kcaptcha stuff
+		//----------------------------------------------------------------
+    function kcaptcha() {
+        $this->kcaptcha->render(); 
+    } 
+    function kcaptchaReset() {
+    	Configure::write('debug', 0);
+    	$this->autoRender = false;
+     	$this->kcaptcha->render(); 
+     	exit();
+    } 
+//--------------------------------------------------------------------
+	function login() {
+		$this->pageTitle = __('Login',true);
+
+		if( !empty($this->data) ) {
+
+			if( $this->Auth->login() ) {
+					
+    		$this->Session->delete('guestKey');
+    		$this->Cookie->del('IniVars');
+    		$this->Cookie->del('guestKey');
+
+
+					if ($this->referer()=='/') {
+						$this->redirect( $this->Auth->redirect() );
+					} else {
+
+						$this->redirect( $this->Auth->redirect() );
+					}
+			
+			} else {
+
+				$this->data['User']['password'] = null;
+				$this->Session->setFlash(__('Check your login and password',true),'default', array('class' => 'er'));
+			}
+		} else {
+			if( !is_null( $this->Session->read('Auth.User.username') ) ){
+
+				$this->redirect( $this->Auth->redirect() );			
+			}
+		}
+		
+	}
+
+//--------------------------------------------------------------------	
+	
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());

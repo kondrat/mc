@@ -1,8 +1,8 @@
 <?php
 class AppController extends Controller {
-	var $components = array( 'Session','Auth', 'RequestHandler', 'Email',
-				'DebugKit.Toolbar'//=> array('panels' => array('customPanel', 'timer'=>true) ) 
-			);//'AutoLogin',
+	var $components = array( 'Session','Auth','AutoLogin', 'RequestHandler', 'Email',
+				'DebugKit.Toolbar'
+			);
 	var $helpers = array('Session','Javascript','Html', 'Form', 'Cache');
 	var $publicControllers = array('pages', 'test');
 //--------------------------------------------------------------------
