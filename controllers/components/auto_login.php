@@ -171,7 +171,9 @@ class AutoLoginComponent extends Object {
 		$cookie['hash'] = $Controller->Auth->password($username . $time);
 		$cookie['time'] = $time;
 		
-		$this->Cookie->write($this->cookieName, $cookie, true, $this->expires);
+		 
+			$this->Cookie->write($this->cookieName, $cookie, true, $this->expires);
+
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 class AppController extends Controller {
-	var $components = array( 'Session','Auth','AutoLogin', 'RequestHandler', 'Email',
+	var $components = array( 'Security','Cookie','Session','Auth','AutoLogin', 'RequestHandler', 'Email',
 				'DebugKit.Toolbar'
 			);
 	var $helpers = array('Session','Javascript','Html', 'Form', 'Cache');
@@ -8,8 +8,8 @@ class AppController extends Controller {
 //--------------------------------------------------------------------
 	function beforeFilter() {
 	
-		$defaultLang = Configure::read('Languages.default');
-		//debug(env('HTTP_ACCEPT_LANGUAGE'));
+
+		/*
 		
 		if ( !isset($this->params['lang']) && !$this->Session->check('langSes') ) {
 			
@@ -18,22 +18,12 @@ class AppController extends Controller {
 
 		} elseif ( !isset($this->params['lang']) && $this->Session->check('langSes') ) {
 			$this->params['lang'] = $this->Session->read('langSes');
-			//$this->Session->write('testSes', 'case2');
 		} 
 
-		//debug(Configure::read('Config.language'));
-		//debug(Configure::version());
 		Configure::write('Config.language', $this->params['lang']);
 		$this->Session->write('langSes',$this->params['lang']);
-		
-		/*
-		if ( ($this->name != 'App') && !in_array($this->params['lang'], Configure::read('Languages.all')) ) {
-			unset($this->params['lang']);
-			$this->Session->del('langSes');
-			$this->Session->setFlash(__('Whoops, not a valid language.', true));
-			$this->redirect('/', 301, true);
-		}
 		*/
+
 		
         if( isset($this->Auth) ) {
 								

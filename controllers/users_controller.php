@@ -3,17 +3,18 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	var $helpers = array('Javascript');
-	var $components = array( 'Security','Cookie','userReg','kcaptcha');
-	var $pageTitle = 'Users data';
+	var $components = array( 'userReg','kcaptcha');
+	//var $pageTitle = 'Users data';
+	
 	var $paginate = array('limit' => 5);
 	
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------	
   function beforeFilter() {
+  			//default title
+  			$this->set('title_for_layout', __('Users data',true) );
+  			//allowed actions
         $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'acoset','aroset','permset','buildAcl');
-          
-        //to Del:
-        //$this->Auth->allowedActions = array('*');
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
@@ -27,27 +28,24 @@ class UsersController extends AppController {
 //--------------------------------------------------------------------	
 	function reg() {
 		
+		$this->set('title_for_layout', __('SignUp',true) );
+		
 		if($this->Auth->user('id')) {
 			$this->redirect('/',null,true);
 		}
 		
-		$this->pageTitle = __('SignUp',true);
+		$this->set('title_for_layout', __('SignUp',true) );
 		
 		if ( !empty($this->data) ) {
 						
 			$this->data['User']['captcha2'] = $this->Session->read('captcha');
 
-			if ( $this->User->save( $this->data) ) {
-				
-    		$this->Session->delete('guestKey');
-    		//$this->Cookie->delete('IniVars');
-    		//$this->Cookie->delete('guestKey');				
-							
+			if ( $this->User->save( $this->data) ) {											
 				$a = $this->User->read();
 				$this->Auth->login($a);
 				$this->Session->setFlash(__('New user\'s accout has been created',true));
-				$this->redirect(array('controller' => 'intervals','action'=>'index'),null,true);
-         	} else {
+				$this->redirect(array('controller' => 'pages','action'=>'home'),null,true);
+      } else {
 				$this->data['User']['captcha'] = null;
 				$this->Session->setFlash(__('New user\'s accout hasn\'t been created',true) , 'default', array('class' => 'er') );
 			}
@@ -103,32 +101,20 @@ class UsersController extends AppController {
     } 
 //--------------------------------------------------------------------
 	function login() {
-		$this->pageTitle = __('Login',true);
+		
+		$this->set('title_for_layout', __('Login',true) );
 
 		if( !empty($this->data) ) {
 
 			if( $this->Auth->login() ) {
-					
-    		$this->Session->delete('guestKey');
-    		//$this->Cookie->delete('IniVars');
-    		//$this->Cookie->delete('guestKey');
-
-
-					if ($this->referer()=='/') {
-						$this->redirect( $this->Auth->redirect() );
-					} else {
-
-						$this->redirect( $this->Auth->redirect() );
-					}
-			
+						$this->redirect( $this->Auth->redirect() );			
 			} else {
-
 				$this->data['User']['password'] = null;
 				$this->Session->setFlash(__('Check your login and password',true),'default', array('class' => 'er'));
 			}
+			
 		} else {
 			if( !is_null( $this->Session->read('Auth.User.username') ) ){
-
 				$this->redirect( $this->Auth->redirect() );			
 			}
 		}
@@ -136,21 +122,16 @@ class UsersController extends AppController {
 	}
 
 //--------------------------------------------------------------------	
-    function logout() {
-    	    	
-    		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username');
-    		
-    		$this->Session->delete('guestKey');
-    		$this->Cookie->delete('IniVars');
-    		$this->Cookie->delete('guestKey');
-    		
-    		
-    		
+    function logout() {    	    	
+    		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username');   		
         $this->Auth->logout();
         $this->Session->setFlash( $tempUserName, 'default', array('class' => '') );
         $this->redirect( '/',null,true);        
     }
 //--------------------------------------------------------------------	
+
+
+
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
