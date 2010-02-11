@@ -206,38 +206,32 @@ div.formWrap input.form-error {
 	height: 60px;
 	float: left;
 }
+
 /*flash message*/
 #flashMessage {
-	position:absolute;
-	width: 630px;
-	background-color:#eee;
-	margin:0px;
+	/*background-color:bisque;*/
+	/*border-bottom:1px solid gray;*/
+	font-size:12pt;
 	font-weight:bold;
-	font-size: 12pt;
 	line-height:2.5em;
+	margin:0px 0 0;
+	overflow:hidden;
+	/*position:absolute;*/
 	text-align:center;
-	overflow: hidden;
-	opacity: .9;
-	/*height:0;*/
+	width:100%;
 	z-index:100;
 }
 div.er {
 	color:red;
 }
 .fl {
-	height:0%;
+	
 	z-index:100;
-}
-/*
-* html fieldset{
-    position: relative;
-    margin-top:0em;
-    padding-top:.75em;
-}
-* html legend{
+	background-color:bisque;
 	position:absolute;
-	top: -0.5em;
- 	left: 0.5em;
- 	background-color:red;
+	width:100%;
+	-webkit-box-shadow: 0 4px 4px gray;
+	-moz-box-shadow: 0 4px 4px gray;
+	box-shadow: 0 4px 4px gray;
 }
-*/
+

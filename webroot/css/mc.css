@@ -1,8 +1,13 @@
 /*header*/
 .pageheader{
-	border-bottom:6px solid #DDDDDD;
+	border-bottom:1px solid #b0b0b0;
 	background:#FCFCFC url(../img/pic/header_bg.png) repeat-x scroll 0 100%;
 	min-width:75em;
+	/*
+
+	*/
+	position: relative;
+
 }
 .topInput {
 	margin: 20px 0;
@@ -25,7 +30,7 @@
 
 #UserUsernameTop {
 	margin: 10px 0 0 0 ;
-	width:210px;
+	width:205px;
 }
 .topSearch{
 	background:transparent url(../img/pic/buttonSearch-left.png) no-repeat scroll 0 0;

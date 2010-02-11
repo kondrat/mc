@@ -19,17 +19,22 @@
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
-		echo $html->script(array('jquery/jquery-1.4.1.min','jquery/jquery.form','jquery/ui.core','jquery/ui.draggable','common'));
+		echo $html->script(array('jquery/jquery-1.4.1.min',
+															//'jquery/jquery.form',
+															//'jquery/ui.core',
+															//'jquery/ui.draggable',
+															'common'));
 
 		echo $scripts_for_layout;
 	?>
 </head>
 <body>
-	<div class="pageheader" style="">
+	<div class="pageheader">
+		<div style="border-bottom:3px solid #DDDDDD">
 			<div class="container">
 				<div class="span-24 topInput" style="margin:20px 0;">
 						<div class="span-11 prepend-6">
-							<div style="float:left; margin-right:1em;">
+							<div style="float:left; margin-right:5px;">
 								<?php echo $html->link('moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 							<?php echo  $form->create('User'); ?>
@@ -44,9 +49,19 @@
 					</div>
 
 			</div>
+	
+		</div>					
 			
 	</div>
+	
+			<div class="fl" style="border-bottom:1px solid gray;">
+				<div style="width:100%;height:10px;"></div>
+				<?php echo $session->flash(); ?>
+			</div>
+
+		
 	<div class="container showgrid.">
+
 		    <div class="span-4">
 		        Left sidebar
 		        <hr />
@@ -56,9 +71,6 @@
 		    <div class="span-16">
 
 		        <div class="span-16 clear last myrr">
-							<div class="fl span-16 last" style="font-weight:bold; position:relative;">
-									<?php $session->flash(); ?>
-							</div>
 							<?php echo $content_for_layout; ?>
 		        </div>
 		    </div>
