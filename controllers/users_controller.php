@@ -43,11 +43,11 @@ class UsersController extends AppController {
 			if ( $this->User->save( $this->data) ) {											
 				$a = $this->User->read();
 				$this->Auth->login($a);
-				$this->Session->setFlash(__('New user\'s accout has been created',true));
+				$this->Session->setFlash(__('New user\'s accout has been created',true), 'default', array('class' => 'flok'));
 				$this->redirect(array('controller' => 'pages','action'=>'home'),null,true);
       } else {
 				$this->data['User']['captcha'] = null;
-				$this->Session->setFlash(__('New user\'s accout hasn\'t been created',true) , 'default', array('class' => 'er') );
+				$this->Session->setFlash(__('New user\'s accout hasn\'t been created',true) , 'default', array('class' => 'fler') );
 			}
 		}
 		
@@ -110,7 +110,7 @@ class UsersController extends AppController {
 						$this->redirect( $this->Auth->redirect() );			
 			} else {
 				$this->data['User']['password'] = null;
-				$this->Session->setFlash(__('Check your login and password',true),'default', array('class' => 'er'));
+				$this->Session->setFlash(__('Check your login and password',true),'default', array('class' => 'fler'));
 			}
 			
 		} else {
@@ -125,7 +125,7 @@ class UsersController extends AppController {
     function logout() {    	    	
     		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username');   		
         $this->Auth->logout();
-        $this->Session->setFlash( $tempUserName, 'default', array('class' => '') );
+        $this->Session->setFlash( $tempUserName, 'default', array('class' => 'flok') );
         $this->redirect( '/',null,true);        
     }
 //--------------------------------------------------------------------	

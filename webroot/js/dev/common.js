@@ -30,14 +30,15 @@ $(document).ready( function(){
 		if($alert.length) {
 				var alerttimer = window.setTimeout(function () {
 					$alert.trigger('click');
-				}, 5000);
-				$alert.animate({height: $alert.css('line-height') || '52px'}, 3000)
+				}, 4500);
+				$alert.animate({height: [$alert.css("line-height") || '52', 'swing']}, 400)
+				//$alert.hide().slideDown('slow')
 				.click(function () {
 					window.clearTimeout(alerttimer);
 					$alert.animate({height: '0'}, 400);
-					});
+				});
 		}
-						//$alert.css({'border':'none'});
+						
 
 					
 

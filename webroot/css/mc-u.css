@@ -82,8 +82,11 @@ p.quickLoginForPas {
 	margin-left:12em;
 }
 #UserUsername, #UserPassword, #UserPassword1, #UserPassword2,#UserEmail,#UserEmailReset {
-	/*width: 206px;*/
+	width: 200px;
 	margin: 0 0 5px;
+	padding: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 }
 div.input {
 	/*margin-bottom: 1em;*/
@@ -96,10 +99,13 @@ div.input {
 	margin: 0;
 } 
 .formWrap label {
-	margin: 0.1em 1em 0 0;
+	margin: 0.1em 10px 0 0;
 	float: left;
-	width: 11em;
-	text-align: right; 
+	width: 9em;
+	text-align: right;
+	font-weight:bold;
+	font-size: 16px; 
+	color:gray;
 }
 div.formWrap  {
 	/*background-color: inherit;*/
@@ -168,7 +174,7 @@ div.formWrap input.form-error {
 
 
 .capchaImg {
-	margin: 0 0 1em 12em;
+	margin: 0 0 1em 14em;
 }
 #UserCaptcha {
 	width: 120px;	
@@ -199,12 +205,14 @@ div.formWrap input.form-error {
 	cursor: pointer;
 }
 .capPlace {
-	/*background-image: url(../img/bg.jpg);*/
 	background-color: #eee;
 	border: 1px solid #7f9db9;
 	width: 142px;
 	height: 60px;
 	float: left;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding:2px;
 }
 
 /*flash message*/
@@ -220,12 +228,15 @@ div.formWrap input.form-error {
 	text-align:center;
 	width:100%;
 	z-index:100;
+	height:0;
 }
-div.er {
+div.fler {
 	color:red;
 }
-.fl {
-	
+div.flok {
+	color:green;
+}
+.fl {	
 	z-index:100;
 	background-color:bisque;
 	position:absolute;
@@ -233,5 +244,6 @@ div.er {
 	-webkit-box-shadow: 0 4px 4px gray;
 	-moz-box-shadow: 0 4px 4px gray;
 	box-shadow: 0 4px 4px gray;
+	padding-top:6px;
 }
 

@@ -19,11 +19,14 @@
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
-		echo $html->script(array('jquery/jquery-1.4.1.min',
+		echo $html->script(array(	'jquery/jquery-1.4.1.min',
 															//'jquery/jquery.form',
 															//'jquery/ui.core',
 															//'jquery/ui.draggable',
-															'common'));
+															'dev/common',
+															'dev/reg',
+															'localization/messages_ru'
+															));
 
 		echo $scripts_for_layout;
 	?>
@@ -55,7 +58,6 @@
 	</div>
 	
 			<div class="fl" style="border-bottom:1px solid gray;">
-				<div style="width:100%;height:10px;"></div>
 				<?php echo $session->flash(); ?>
 			</div>
 

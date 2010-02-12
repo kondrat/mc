@@ -1,8 +1,6 @@
-<?php echo $javascript->link(array('reg','localization/messages_ru'),false);?>
-
 <div class="inner_page">
 	
-		
+		<h2><?php __('Join moyContact world');?></h2>
 		
 		<?php echo $form->create('User', array('action' => 'reg' ) ); ?>
 	
