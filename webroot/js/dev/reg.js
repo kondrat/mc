@@ -26,7 +26,7 @@ jQuery(document).ready( function(){
 	//username ability check
 	$('#UserUsername').blur( function() {
 
-		$('#usernameWrap').append('<div id="ajimg"><img src="'+path+'/img/icons/ajax-loader1.gif" /></div>');
+		$('#usernameWrap').append('<div id="chName"><img src="'+path+'/img/icons/ajax-loader1.gif" /></div>');
 		$('#usernameWrap .error-message').remove();
 		$('#usernameWrap input').removeClass('form-error');				
 		$('#response').remove();

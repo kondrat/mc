@@ -87,6 +87,7 @@ p.quickLoginForPas {
 	padding: 5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+	float:left;
 }
 div.input {
 	/*margin-bottom: 1em;*/
@@ -103,7 +104,6 @@ div.input {
 	float: left;
 	width: 9em;
 	text-align: right;
-	font-weight:bold;
 	font-size: 16px; 
 	color:gray;
 }
@@ -127,10 +127,10 @@ div.formWrap input.form-error {
 	margin: 1em 0 1em 14.5em;
 	padding:0;
 }
-#ajimg {
-	margin: 0 0 0 12em;
-	padding: 0;
+#chName {
+	padding: 6px;
 	height: 15px;
+	float:left;
 }
 .greenMessage{
 	margin: 0 0 0 12em;

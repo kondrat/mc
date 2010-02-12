@@ -5,8 +5,9 @@
 		<?php echo $form->create('User', array('action' => 'reg' ) ); ?>
 	
 	
-					<?php echo $form->input('username', array('div'=>array("id"=>"usernameWrap","class"=>"formWrap"),'label'=>__('Username',true),
-										
+					<?php echo $form->input('username', array('div'=>array("id"=>"usernameWrap","class"=>"formWrap span-16" ),
+					
+										'label'=>__('Username',true) ,									
 										'error' => array(
 																		'notEmpty' => __('This field cannot be left blank',true),
 											        			'alphanumeric' => __('Only alphabets and numbers allowed', true),
@@ -18,7 +19,7 @@
 					?>
 	
 	
-					<?php echo $form->input('password1' , array('type' => 'password','div'=>array("id"=>"passWrap","class"=>"formWrap"), 'label'=>__('Password',true),
+					<?php echo $form->input('password1' , array('type' => 'password','div'=>array("id"=>"passWrap","class"=>"formWrap span-16"), 'label'=>__('Password',true),
 										'error' => array(
 											        			//'alphanumeric' => __('Only alphabets and numbers allowed', true),
 											        			'betweenRus' => __('Password must be between 2 and 15 characters long', true),
@@ -27,7 +28,7 @@
 					?>
 	
 	
-					<?php echo $form->input('password2' , array('type' => 'password','div'=>array("id"=>"pass2Wrap","class"=>"formWrap"), 'label'=>__('Confirm Password',true),
+					<?php echo $form->input('password2' , array('type' => 'password','div'=>array("id"=>"pass2Wrap","class"=>"formWrap span-16"), 'label'=>__('Confirm Password',true),
 										'error' => array(
 											        			'passidentity' => __('Please verify your password again', true),
 				        										)	
@@ -35,7 +36,7 @@
 					?>
 	
 	
-					<?php echo $form->input('email' , array('div'=>array("id"=>"emailWrap","class"=>"formWrap"),"class"=>"email required", 'label'=>__('Email',true),
+					<?php echo $form->input('email' , array('div'=>array("id"=>"emailWrap","class"=>"formWrap span-16"),"class"=>"email required", 'label'=>__('Email',true),
 										'error' => array(
 											        			'email' => __('Your email address does not appear to be valid', true),
 											        			'checkUnique' => __('This Email has already been taken',true),
