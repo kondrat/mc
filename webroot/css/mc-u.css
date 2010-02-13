@@ -131,6 +131,18 @@ div.formWrap input.form-error {
 	padding: 6px;
 	height: 15px;
 	float:left;
+	color:gray;
+}
+#chName img {
+	float:left;
+	margin-right:5px;
+}
+#yourUrl{
+	color:gray;
+	line-height:1em;
+}
+#yourUrl span{
+	font-size:120%;
 }
 .greenMessage{
 	margin: 0 0 0 12em;

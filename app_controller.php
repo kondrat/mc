@@ -24,6 +24,11 @@ class AppController extends Controller {
 		$this->Session->write('langSes',$this->params['lang']);
 		*/
 
+
+
+
+
+
 		
         if( isset($this->Auth) ) {
 								

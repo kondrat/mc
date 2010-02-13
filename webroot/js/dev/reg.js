@@ -23,34 +23,52 @@ jQuery(document).ready( function(){
 				$('#capImg').attr( {src: path+"/users/kcaptcha/"+Stamp.getTime()});
 			}
 		)
+		
+		
 	//username ability check
-	$('#UserUsername').blur( function() {
-
-		$('#usernameWrap').append('<div id="chName"><img src="'+path+'/img/icons/ajax-loader1.gif" /></div>');
+	$('#UserUsername').keypress( function() {
+		$('#chName').show();
 		$('#usernameWrap .error-message').remove();
 		$('#usernameWrap input').removeClass('form-error');				
 		$('#response').remove();
 		$('#usernameWrap').removeClass("error");
-		
-    		$.post(
-	    		"userNameCheck",
-	    		{"data[User][username]": $(this).attr('value') },
-	        	function(data){
-					$('#usernameWrap').append('<div id="response">'+data.hi+'</div>');
-	        		if( data.typ == 0 ) {
-	        			$('#usernameWrap').addClass("error");
-	        			$('#response').addClass('error-message');
-	        			$('#usernameWrap input').addClass('form-error');
-	        			
-	        		} else {
-	        			$('#response').addClass('greenMessage');
-	        			$('#response').css({'color':'green','font-weight':'bold'});
-	        			//alert(data.typ+'2');
-	        		}					
-					$('#ajimg').remove();
-	          	},
-	          	"json"
+						
+						$.post(
+							"/users/userNameCheck",
+							{"data[User][username]": $(this).attr('value') },
+					    	function(data){
+									$('#usernameWrap').append('<div id="response">'+data.hi+'</div>');
+											if( data.typ == 0 ) {
+												$('#usernameWrap').addClass("error");
+												$('#response').addClass('error-message');
+												$('#usernameWrap input').addClass('form-error');
+												
+											} else {
+												$('#response').addClass('greenMessage');
+												$('#response').css({'color':'green','font-weight':'bold'});
+												//alert(data.typ+'2');
+											}					
+									$('#ajimg').remove();
+					      },
+					      "json"
           	);
+          	/*
+							$.ajax({
+									type: "POST",
+									url: "/users/userNameCheck/",
+									data: {"data[User][username]": "hiTest" },
+									dataType: "json",
+									success: function (data) {
+										  if (data.success == true) {
+										  	// Success!
+										  	alert('suc');
+										  } else {
+										  	alert(data.data +" ("+ data.code ")");
+										  }
+									}
+							});
+							*/
+
         });
 
 

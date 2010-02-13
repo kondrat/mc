@@ -2,10 +2,9 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Javascript');
+	var $helpers = array();
 	var $components = array( 'userReg','kcaptcha');
-	//var $pageTitle = 'Users data';
-	
+
 	var $paginate = array('limit' => 5);
 	
 //--------------------------------------------------------------------
@@ -14,20 +13,28 @@ class UsersController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Users data',true) );
   			//allowed actions
-        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'acoset','aroset','permset','buildAcl');
+        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'userNameCheck' 
+        										//'acoset','aroset','permset','buildAcl'
+        										);
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
         
         // swiching off Security component for ajax call
-			if( isset($this->Security) && $this->RequestHandler->isAjax() ) {
-     			$this->Security->enabled = false; 
-     		}
+        
+				if( $this->RequestHandler->isAjax() && $this->action == 'userNameCheck' ) { 
+		   			$this->Security->validatePost = false;
+		   	}
+		   	
+		   	
+
     }
+
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------	
 	function reg() {
-		
+
+
 		$this->set('title_for_layout', __('SignUp',true) );
 		
 		if($this->Auth->user('id')) {
@@ -58,36 +65,61 @@ class UsersController extends AppController {
 //ajax staff
 	//----------------------------------------------------------------
 		function userNameCheck() {
-
-			$errors = array();
 			Configure::write('debug', 0);
+			$this->autoLayout = false;
 			$this->autoRender = false;
-			//don't foreget about santization and trimm
-			if (!empty($this->data) && $this->data['User']['username'] != null) {
-				if ($this->RequestHandler->isAjax()) {
-					$this->User->set( $this->data );
-					$errors = $this->User->invalidFields();
-					if($errors == array()) {
-						$type = 1;
-						$errors['username'] = __('Login is free',true);
-					} else {
-						$type = 0;
-					}
-					echo json_encode(array('hi'=> $errors['username'], 'typ'=> $type));
-					
-							Configure::write('debug', 0);
-							$this->autoRender = false;
-				 			exit();						
-						
+			
+			if ( $this->RequestHandler->isAjax() ){
+
+				if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
+					$this->Security->blackHole($this, 'Invalid referrer detected for this request!');
 				}
-			} else {
-					echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'typ'=> 0));
+
+
+				
+				$errors = array();
+				$this->header('Content-Type: application/json');
+				echo json_encode(array('hi'=>'ajax..ss'));
+			
+				//don't foreget about santization and trimm
+				if (!empty($this->data) && $this->data['User']['username'] != null) {
+
+						$this->User->set( $this->data );
+						$errors = $this->User->invalidFields();
+						if($errors == array()) {
+							$type = 1;
+							$errors['username'] = __('Login is free',true);
+						} else {
+							$type = 0;
+						}
+						/*
+						echo json_encode(array('hi'=> $errors['username'], 'typ'=> $type));
 					
-							Configure::write('debug', 0);
-							$this->autoRender = false;
-				 			exit();	
-			}		
+								Configure::write('debug', 0);
+								$this->autoRender = false;
+					 			exit();
+					 			*/						
+						
+
+				} else {
+						//echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'typ'=> 0));
+						e('ajax..ss');
+					
+								//Configure::write('debug', 0);
+								//$this->autoRender = false;
+					 			//exit();	
+				}		
+			} else {				
+				$this->Security->blackHoleCallback = 'gotov';	
+				$this->Security->blackHole($this, 'You are not authorized to process this request!');			
+			}
+			
 		}
+				//blackhole redirection
+				//-----------------------------
+				function gotov() {
+					$this->redirect(null, 404, true);
+				}	
 		//kcaptcha stuff
 		//----------------------------------------------------------------
     function kcaptcha() {
