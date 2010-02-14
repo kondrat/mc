@@ -56,10 +56,11 @@
 		</div>					
 			
 	</div>
-	
-			<div class="fl" style="border-bottom:1px solid gray;">
-				<?php echo $session->flash(); ?>
-			</div>
+	    <div style="position:relative;width:950px;margin:0 auto;">
+			  <div class="fl" style="border-bottom:1px solid gray;">
+				  <?php echo $session->flash(); ?>
+			  </div>
+	    </div>
 
 		
 	<div class="container showgrid.">

@@ -26,18 +26,30 @@ jQuery(document).ready( function(){
 		
 		
 	//username ability check
-	$('#UserUsername').keypress( function() {
+	$('#UserUsername').keyup( function() {
+	
 		$('#chName').show();
+		
 		$('#usernameWrap .error-message').remove();
 		$('#usernameWrap input').removeClass('form-error');				
 		$('#response').remove();
 		$('#usernameWrap').removeClass("error");
-						
+		  
+		
+		var ttm;
+		ttm = $(this).attr('value');
+		var ttm2;
+		ttm2 = ttm.replace(/^([Mb]cc)/i,'<span style="color:brown;">OK</span>');
+		  
+		$('#yourUrl span').html( ttm2 ).css("color","green");
+		
+		
+						/*
 						$.post(
 							"/users/userNameCheck",
 							{"data[User][username]": $(this).attr('value') },
 					    	function(data){
-									$('#usernameWrap').append('<div id="response">'+data.hi+'</div>');
+									//$('#usernameWrap').append('<div id="response">'+data.hi+'</div>');
 											if( data.typ == 0 ) {
 												$('#usernameWrap').addClass("error");
 												$('#response').addClass('error-message');
@@ -52,22 +64,30 @@ jQuery(document).ready( function(){
 					      },
 					      "json"
           	);
-          	/*
+          	*/
+          	  
 							$.ajax({
 									type: "POST",
 									url: "/users/userNameCheck/",
-									data: {"data[User][username]": "hiTest" },
+									data: {"data[User][username]": $(this).attr('value') },
 									dataType: "json",
+									
 									success: function (data) {
-										  if (data.success == true) {
+										  if (data.typ == true) {
 										  	// Success!
 										  	alert('suc');
 										  } else {
-										  	alert(data.data +" ("+ data.code ")");
+
+										  	//alert('not suc');
 										  }
-									}
+									},
+									error: function(response, status) {
+			              //alert('An unexpected error has occurred!');
+		              }
+
+									
 							});
-							*/
+							
 
         });
 
