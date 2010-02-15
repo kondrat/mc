@@ -253,9 +253,9 @@ div.flok {
 	background-color:bisque;
 	position:absolute;
 	width:100%;
-	-webkit-box-shadow: 0 4px 4px gray;
-	-moz-box-shadow: 0 4px 4px gray;
-	box-shadow: 0 4px 4px gray;
-	padding-top:6px;
+	-webkit-box-shadow: 0 2px 3px gray;
+	-moz-box-shadow: 0 2px 3px gray;
+	box-shadow: 0 2px 3px gray;
+	padding-top:3px;
 }
 

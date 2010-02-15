@@ -79,7 +79,6 @@ class UsersController extends AppController {
 				
 				$errors = array();
 				$this->header('Content-Type: application/json');
-				echo json_encode(array('hi'=>'ajax..ss'));
 			
 				//don't foreget about santization and trimm
 				if (!empty($this->data) && $this->data['User']['username'] != null) {
@@ -92,18 +91,15 @@ class UsersController extends AppController {
 						} else {
 							$type = 0;
 						}
-						/*
-						echo json_encode(array('hi'=> $errors['username'], 'typ'=> $type));
-					
-								Configure::write('debug', 0);
-								$this->autoRender = false;
-					 			exit();
-					 			*/						
+						
+						echo json_encode(array('ok'=> $errors['username'], 'er'=> $type));
+					 	exit();
+					 									
 						
 
 				} else {
-						//echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'typ'=> 0));
-						e('ajax..ss');
+						echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'er'=> 0));
+						
 					
 								//Configure::write('debug', 0);
 								//$this->autoRender = false;

@@ -24,7 +24,8 @@
 						      					
 						 			) ); 
 						?>
-						<div id="chName" style="display:none;"><img src="/img/icons/ajax-loader1.gif" /><?php __('Checking availability...');?> </div>
+						<div id="chName" style="display:none;"><?php echo $html->image("icons/ajax-loader1.gif");?><?php __('Checking availability...');?></div>
+						<div id="nameFormTip" style="padding:5px;float:left;padding:0 0 0 5px;width:255px;color:#ccc;"><?php __('Only letters and numbers, 16 char max.');?></div>
 						<div id="yourUrl" class="span-12 prepend-4"><?php __('Your URL http://moycontact.ru/');?><span>username</span></div>
 					</div>
 	
@@ -37,6 +38,7 @@
 						      										)						
 									 ) ); 
 						?>
+						<div id="passFormTip" style="padding:5px;float:left;padding:0px 0 0px 5px;width:255px;color:#ccc;"><?php __('Password must be between 2 and 15 characters long');?></div>
 					</div>	
 					<div class="formWrap span-16">	
 						<?php echo $form->input('password2' , array('type' => 'password','div'=>array("id"=>"pass2Wrap"),

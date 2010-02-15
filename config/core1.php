@@ -297,7 +297,7 @@
 	Cache::config('default', array('engine' => 'File'));
 /*
  * Current dir configuratin
- * ex '/pvr' or ''.
+ * ex '/mc.go' or ''.
  */
-	Configure::write('path', '/mc.go');
+	Configure::write('path', '');
 ?>

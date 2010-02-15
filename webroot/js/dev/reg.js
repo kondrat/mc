@@ -26,8 +26,19 @@ jQuery(document).ready( function(){
 		
 		
 	//username ability check
-	$('#UserUsername').keyup( function() {
+	$('#UserUsername').focus( function() {
+		var ttm1 = $('#UserUsername').attr("value");
+		if(ttm1.length === 0){
+			$('#nameFormTip').css({"color":"brown"});
+		}else{
+			$('#yourUrl span').html( ttm1 ).css("color","green");
+		}
+	});	
 	
+	
+	$('#UserUsername').keyup( function() {
+		
+		$('#nameFormTip').hide();	
 		$('#chName').show();
 		
 		$('#usernameWrap .error-message').remove();
@@ -38,10 +49,9 @@ jQuery(document).ready( function(){
 		
 		var ttm;
 		ttm = $(this).attr('value');
-		var ttm2;
-		ttm2 = ttm.replace(/^([Mb]cc)/i,'<span style="color:brown;">OK</span>');
-		  
-		$('#yourUrl span').html( ttm2 ).css("color","green");
+		ttm = ttm.replace(/([^a-z0-9])/ig,'');
+		$(this).attr({value:ttm});
+		$('#yourUrl span').html( ttm ).css("color","green");
 		
 		
 						/*
@@ -68,21 +78,24 @@ jQuery(document).ready( function(){
           	  
 							$.ajax({
 									type: "POST",
-									url: "/users/userNameCheck/",
+									url: path+"/users/userNameCheck/",
 									data: {"data[User][username]": $(this).attr('value') },
 									dataType: "json",
 									
 									success: function (data) {
-										  if (data.typ == true) {
+										  if (data.er == true) {
 										  	// Success!
-										  	alert('suc');
+										  	$('#chName').hide();
+										  	$('#nameFormTip').text(data.ok).css({"color":"green"}).show();
+										  	
 										  } else {
-
-										  	//alert('not suc');
+										  	$('#chName').hide();
+										  	$('#nameFormTip').text(data.ok).css({"color":"red"}).show();
+										  	
 										  }
 									},
 									error: function(response, status) {
-			              //alert('An unexpected error has occurred!');
+			              alert('An unexpected error has occurred! ');
 		              }
 
 									
@@ -112,8 +125,7 @@ jQuery(document).ready( function(){
 
 
 
-
-	$('#UserPassword1').blur( function() {
+	$('#UserPassword1').keyup( function() {
 		
 		$('#passWrap .error-message').remove();
 		$('#passWrap').removeClass("error");
