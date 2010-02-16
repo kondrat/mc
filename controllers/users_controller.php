@@ -99,11 +99,7 @@ class UsersController extends AppController {
 
 				} else {
 						echo json_encode(array('hi'=> __('This field cannot be left blank',true), 'er'=> 0));
-						
-					
-								//Configure::write('debug', 0);
-								//$this->autoRender = false;
-					 			//exit();	
+						exit();	
 				}		
 			} else {				
 				$this->Security->blackHoleCallback = 'gotov';	

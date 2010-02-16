@@ -30,6 +30,7 @@ jQuery(document).ready( function(){
 		var ttm1 = $('#UserUsername').attr("value");
 		if(ttm1.length === 0){
 			$('#nameFormTip').css({"color":"brown"});
+			$('#yourUrl span').html( 'username' ).css("color","gray");
 		}else{
 			$('#yourUrl span').html( ttm1 ).css("color","green");
 		}
@@ -51,7 +52,11 @@ jQuery(document).ready( function(){
 		ttm = $(this).attr('value');
 		ttm = ttm.replace(/([^a-z0-9])/ig,'');
 		$(this).attr({value:ttm});
-		$('#yourUrl span').html( ttm ).css("color","green");
+		if( ttm.length !== 0 ) {
+			$('#yourUrl span').html( ttm ).css("color","green");
+		}else{
+			$('#yourUrl span').html( 'username' ).css("color","gray");
+		}
 		
 		
 						/*
@@ -91,6 +96,7 @@ jQuery(document).ready( function(){
 										  } else {
 										  	$('#chName').hide();
 										  	$('#nameFormTip').text(data.ok).css({"color":"red"}).show();
+										  	$('#yourUrl span').css({"color":"red"});
 										  	
 										  }
 									},

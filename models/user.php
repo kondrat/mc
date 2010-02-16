@@ -20,7 +20,7 @@ class User extends AppModel {
 												
 												'betweenRus' => array(
 																							'rule' => array( 'betweenRus', 2, 15, 'username'),
-																						//	'message' => 'Username must be between 2 and 15 characters long.',
+																							//'message' => 'Username must be between 2 and 15 characters long.',
 																							'last' => true
 																							),
 												'checkUnique' => array( 
