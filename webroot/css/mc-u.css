@@ -79,7 +79,10 @@ p.quickLoginForPas {
 .error-message {
 	color:#8A1F11;
 	font-weight:bold;
-	margin-left:12em;
+	/*margin-left:12em;*/
+	position:absolute;
+	top:20px;
+	left:10px;
 }
 #UserUsername, #UserPassword, #UserPassword1, #UserPassword2,#UserEmail,#UserEmailReset {
 	width: 200px;
@@ -127,8 +130,8 @@ div.formWrap input.form-error {
 	margin: 1em 0 1em 14.5em;
 	padding:0;
 }
-#chName {
-	padding: 6px;
+#checkName {
+	padding: 0 6px;
 	height: 15px;
 	float:left;
 	color:gray;
@@ -136,6 +139,13 @@ div.formWrap input.form-error {
 #chName img {
 	float:left;
 	margin-right:5px;
+}
+#nameFormTip {
+	padding:5px;
+	float:left;
+	padding:0 0 0 5px;
+	width:255px;
+	color:#ccc;
 }
 #yourUrl{
 	color:gray;

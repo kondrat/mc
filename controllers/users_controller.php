@@ -13,7 +13,7 @@ class UsersController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Users data',true) );
   			//allowed actions
-        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'userNameCheck' 
+        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'userNameCheck','index','view'
         										//'acoset','aroset','permset','buildAcl'
         										);
 
@@ -92,7 +92,7 @@ class UsersController extends AppController {
 							$type = 0;
 						}
 						
-						echo json_encode(array('ok'=> $errors['username'], 'er'=> $type));
+						echo json_encode(array('ok'=> __($errors['username'],true), 'er'=> $type));
 					 	exit();
 					 									
 						

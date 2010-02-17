@@ -40,7 +40,7 @@ jQuery(document).ready( function(){
 	$('#UserUsername').keyup( function() {
 		
 		$('#nameFormTip').hide();	
-		$('#chName').show();
+		$('#checkName').show();
 		
 		$('#usernameWrap .error-message').remove();
 		$('#usernameWrap input').removeClass('form-error');				
@@ -90,13 +90,15 @@ jQuery(document).ready( function(){
 									success: function (data) {
 										  if (data.er == true) {
 										  	// Success!
-										  	$('#chName').hide();
-										  	$('#nameFormTip').text(data.ok).css({"color":"green"}).show();
+										  	$('#checkName').hide();
+										  	$('#nameFormTip span').text(data.ok).css({"color":"green"}).parent().show();
+										  	$('#nameFormTip img').show();
 										  	
 										  } else {
-										  	$('#chName').hide();
-										  	$('#nameFormTip').text(data.ok).css({"color":"red"}).show();
+										  	$('#checkName').hide();
+										  	$('#nameFormTip span').text(data.ok).css({"color":"red"}).parent().show();
 										  	$('#yourUrl span').css({"color":"red"});
+										  	$('#nameFormTip img').hide();
 										  	
 										  }
 									},

@@ -31,4 +31,13 @@
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	//experment.
+	App::import('Lib', 'routes/SlugRoute');
+	//Router::connect('/:slug', array('controller' => 'users', 'action' => 'index'), array('routeClass' => 'SlugRoute'));
+	
+		Router::connect('/:slug/:controller/:action/*', array('slug'=>null ), array('routeClass' => 'SlugRoute'));
+
+	//Router::connect('/:username/:controller/:action/*', array('username'=> null ),array( 'username' => '[a-z]+') );
+	
 ?>

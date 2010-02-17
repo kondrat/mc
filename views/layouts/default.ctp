@@ -41,7 +41,7 @@
 								<?php echo $html->link('moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 							<?php echo  $form->create('User'); ?>
-								<?php echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop'));?>
+								<?php echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop','error'=>false));?>
 							<?php echo $form->end();?>
 						</div>
 						<div class="span-4" style="position:relative;" >
