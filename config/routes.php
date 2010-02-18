@@ -35,8 +35,10 @@
 	//experment.
 	App::import('Lib', 'routes/SlugRoute');
 	//Router::connect('/:slug', array('controller' => 'users', 'action' => 'index'), array('routeClass' => 'SlugRoute'));
-	
-		Router::connect('/:slug/:controller/:action/*', array('slug'=>null ), array('routeClass' => 'SlugRoute'));
+	Router::connect('/:id/:uname/:controller/:action/*', array('controller'=>'users','action'=>'index','id'=> null,'uname'=> null ), array('pass'=> array('id','uname'),'id'=>'[0-9]+', 'uname'=>'[a-z]+' ) );
+		Router::connect('/:controller/:action/*', array('controller'=>'users','action'=>'index' ), array() );
+
+		//Router::connect('/:slug/:controller/:action/*', array('slug'=>null ), array('routeClass' => 'SlugRoute'));
 
 	//Router::connect('/:username/:controller/:action/*', array('username'=> null ),array( 'username' => '[a-z]+') );
 	
