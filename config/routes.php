@@ -36,15 +36,20 @@
 	
 	//experment.
 	
-	//Router::connect('/:slug', array('controller' => 'users', 'action' => 'index'), array('routeClass' => 'SlugRoute'));
-	Router::connect('/:uname/', array('controller'=>'pages','action'=>'display','home','uname'=> null ),
-	                            array('pass'=> array('uname'),'routeClass' => 'SlugRoute','uname'=>'[a-z0-9]+') 
+	Router::connect('/:uname',
+															array('controller' => 'pages', 'action' => 'display', 'home','id'=> null),// array('controller'=>'pages','action'=>'display','home','uname'=> null ),
+	                            array('routeClass' => 'SlugRoute' )
+	               );
+	Router::connect('/:uname/:id',
+															array('controller' => 'pages', 'action' => 'display', 'home','id'=> null),// array('controller'=>'pages','action'=>'display','home','uname'=> null ),
+	                            array('routeClass' => 'SlugRoute','id'=>'[a-z]{2}+' )
 	               );
 	               
-	               
+	             
 	Router::connect('/:uname/:id/:controller/:action/*', array('controller'=>'users','action'=>'index','id'=> null,'uname'=> null ),
 	                                                     array('pass'=> array('uname','id'),'routeClass' => 'SlugRoute','uname'=>'[a-z0-9]+','id'=>'[0-9]+' ) 
 	               );
+
 		//Router::connect('/:controller/:action/*', array('controller'=>'users','action'=>'index' ), array() );
 
 		//Router::connect('/:slug/:controller/:action/*', array('slug'=>null ), array('routeClass' => 'SlugRoute'));
