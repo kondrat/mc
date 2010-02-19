@@ -103,7 +103,7 @@ jQuery(document).ready( function(){
 										  }
 									},
 									error: function(response, status) {
-			              alert('An unexpected error has occurred! ');
+			              //alert('An unexpected error has occurred! ');
 		              }
 
 									

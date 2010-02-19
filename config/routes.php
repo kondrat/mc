@@ -26,6 +26,8 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
+ App::import('Lib', 'routes/SlugRoute');
+ 
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
@@ -33,10 +35,17 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
 	//experment.
-	App::import('Lib', 'routes/SlugRoute');
+	
 	//Router::connect('/:slug', array('controller' => 'users', 'action' => 'index'), array('routeClass' => 'SlugRoute'));
-	Router::connect('/:id/:uname/:controller/:action/*', array('controller'=>'users','action'=>'index','id'=> null,'uname'=> null ), array('pass'=> array('id','uname'),'id'=>'[0-9]+', 'uname'=>'[a-z]+' ) );
-		Router::connect('/:controller/:action/*', array('controller'=>'users','action'=>'index' ), array() );
+	Router::connect('/:uname/', array('controller'=>'pages','action'=>'display','home','uname'=> null ),
+	                            array('pass'=> array('uname'),'routeClass' => 'SlugRoute','uname'=>'[a-z0-9]+') 
+	               );
+	               
+	               
+	Router::connect('/:uname/:id/:controller/:action/*', array('controller'=>'users','action'=>'index','id'=> null,'uname'=> null ),
+	                                                     array('pass'=> array('uname','id'),'routeClass' => 'SlugRoute','uname'=>'[a-z0-9]+','id'=>'[0-9]+' ) 
+	               );
+		//Router::connect('/:controller/:action/*', array('controller'=>'users','action'=>'index' ), array() );
 
 		//Router::connect('/:slug/:controller/:action/*', array('slug'=>null ), array('routeClass' => 'SlugRoute'));
 

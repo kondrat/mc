@@ -19,11 +19,12 @@ class SlugRoute extends CakeRoute {
             'recursive' => -1
         ));
         if ($count) {
-        	//debug($params);
+        	  debug($params);
             return $params;
         } else {
         	//echo 'blinnn';
         }
+        echo 'false';
         return false;
     }
  
