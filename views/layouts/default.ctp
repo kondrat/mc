@@ -19,7 +19,7 @@
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
-		echo $html->script(array(	'jquery/jquery-1.4.1.min',
+		echo $html->script(array(	'jquery/jquery-1.4.2.min',
 															//'jquery/jquery.form',
 															//'jquery/ui.core',
 															//'jquery/ui.draggable',
