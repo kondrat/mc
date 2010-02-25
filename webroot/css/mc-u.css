@@ -92,10 +92,7 @@ p.quickLoginForPas {
 	-webkit-border-radius:5px;
 	float:left;
 }
-div.input {
-	/*margin-bottom: 1em;*/
-	float:left;
-}
+
 #UserLoginForm fieldset {
 	width: 212px;
 }
@@ -123,13 +120,11 @@ div.error {
 	border:none;
 	background:none;
 }
+
 div.formWrap input.form-error {
 	background-color: #FBC2C4;
 }
-.submit {
-	margin: 1em 0 1em 14.5em;
-	padding:0;
-}
+
 #checkName {
 	padding: 0 6px;
 	height: 15px;
@@ -194,10 +189,6 @@ div.formWrap input.form-error {
 
 
 
-
-.capchaImg {
-	margin: 0 0 1em 14em;
-}
 #UserCaptcha {
 	width: 120px;	
 	margin:0;
