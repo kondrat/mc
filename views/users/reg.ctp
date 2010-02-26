@@ -1,6 +1,6 @@
 <div class="inner_page">
 
-		<h2><?php __('Join moyContact world');?></h2>
+		<h3><?php __('Join moyContact world');?></h3>
 		
 		<?php echo $form->create('User', array(
 																						'action' => 'reg',        
@@ -12,6 +12,8 @@
 		 ) ); ?>
 	
 					<div class="formWrap span-16">
+						
+							<div id="yourUrl" class="span-12 push-4"><?php __('Your URL http://moycontact.ru/');?><span>username</span></div>
 							<?php echo $form->input('username', array('div'=>array("id"=>"usernameWrap"),
 					
 												'label'=>__('Username',true) ,
@@ -28,7 +30,6 @@
 							?>
 							<div id="checkName" style="display:none;"><?php echo $html->image("icons/ajax-loader1.gif");?><?php __('Checking availability...');?></div>
 							<div id="nameFormTip"><?php echo $html->image("icons/check_mark_green.png",array("style"=>"display:none;"));?><span><?php __('Only letters and numbers, 16 char max.');?></span></div>
-							<div id="yourUrl" class="span-12 prepend-4"><?php __('Your URL http://moycontact.ru/');?><span>username</span></div>
 					</div>
 	
 					<div class="formWrap span-16">	
@@ -70,15 +71,17 @@
 
 					<div class="formWrap span-16">
 													
-							<div class="span-6">	
+							<div class="prepend-4 span-4">	
 									<div class="capPlace"><?php echo $html->image( array('controller'=>'users','action'=>'kcaptcha',time() ),array('id'=>'capImg') );?></div>				
-									<div class="capReset">
-										<p><?php echo $html->image('icons/001_39.png');?><span><?php __('Couldn\'t see');?></span></p>
+									<div class="span-4 capReset">
+										<?php echo $html->image("icons/ajax-loader1-stat.png");?>
+										<span><?php __('Couldn\'t see');?></span>
 									</div>								
 							</div>					
-							<div class="span-6">					
+							<div class="span-6">	
+								<div><?php __('Please type in the code');?></div>				
 								<?php echo $form->input('captcha', array(	'div'=> array("id"=>"captchaWrap"),
-																													'label' => __('Please type in the code',true),
+																													'label' =>false,
 													/*
 													'error' => array(
 																					'notEmpty' => __('This field cannot be left blank',true),
@@ -92,8 +95,8 @@
 							
 					</div>
 					
-					<div class="formWrap span-16">			
-								<span><?php echo $form->button( __('Submit',true), array('type'=>'submit', 'id'=>'regSubmit','class'=>'span-3') ); ?></span>
+					<div class="push-4 span-12">			
+								<span><?php echo $form->button( __('Submit',true), array('type'=>'submit', 'id'=>'regSubmit') ); ?></span>
 					</div>
 		
 	<?php echo $form->end(); ?>

@@ -24,24 +24,29 @@
 /* ---------------cur work----------------------*/
 
 .reg {
-	width:14.5em;
+	/*width:10em;*/
 }
 .reg a {
 	display:block;
-	border: 3px solid silver;
-	margin: 30px auto;
+	border: 1px solid burlyWood;
+	
 	padding: 3px 10px;
 	text-align:center;
 	
-	font-size: larger;
+	font-size: 2em;
 	text-decoration:none;
 	font-weight: bold;
 	background-color: #97CD39;
-	color: #f2f2f2;
+	color: gray;
+	text-shadow:-1px 1px 0 #eee;
+	background:transparent url(../img/pic/reg.png) repeat-x scroll 0 0;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
 }
 .reg a:hover {
-	color: #fff;
-	border: 3px solid #DFDFDF;
+	color: gray;
+	text-shadow:-1px 1px 0 #fff;
+	background-position: 0 -5px;
 }
 /*quick Login Calss*/
 .quickLiginSubmit {
@@ -49,7 +54,10 @@
 }
 #UserAutoLogin{
 	top: 0.15em;
-	margin: 0;
+	margin: 0 5px;
+}
+.autoLogin label {
+	color:gray;
 }
 .quickLoginCheckbox label{
 	margin: 4px;
@@ -145,6 +153,7 @@ div.formWrap input.form-error {
 #yourUrl{
 	color:gray;
 	line-height:1em;
+	font-size:11px;
 }
 #yourUrl span{
 	font-size:120%;
@@ -187,31 +196,25 @@ div.formWrap input.form-error {
 	text-decoration:underline;
 }  
 
-
-
 #UserCaptcha {
 	width: 120px;	
 	margin:0;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding:5px;
 }
-.capchaImg p img {
-	border: none;
-	margin: 0;
-	cursor: pointer;
-}
+
 .capReset {
-	float: left;
-	margin: 19px 19px 10px 19px;
 	position:relative;
 }
-.capReset span {
-	color: #808080;
-	font-family:comic Sans MS;
-	font-size:smaller;
-	font-weight:bold;
-	left:-5px;
+.capReset img {
 	position:absolute;
-	top:25px;
-	width:150px;
+	top:2px;
+}
+.capReset span {
+	cursor:pointer;
+	border-bottom:1px dashed;
+	margin-left:18px;
 }
 
 #capImg {
@@ -226,6 +229,9 @@ div.formWrap input.form-error {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	padding:2px;
+}
+#logSubmit, #regSubmit {
+	padding: 0 1.3em;
 }
 
 /*flash message*/

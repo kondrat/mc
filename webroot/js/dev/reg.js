@@ -18,7 +18,7 @@ jQuery(document).ready( function(){
 	var local = $.extend(settings, options);
 
 	//getting new captcha
-		$('.capReset p img, #capImg').click( function() {
+		$('.capReset span, #capImg').click( function() {
 				var Stamp = new Date();
 				$('#capImg').attr( {src: path+"/users/kcaptcha/"+Stamp.getTime()});
 			}
@@ -37,8 +37,9 @@ jQuery(document).ready( function(){
 	});	
 	
 	
-	$('#UserUsername').keyup( function() {
+	$('#UserUsername').keypress( function() {
 		
+		/*
 		$('#nameFormTip').hide();	
 		$('#checkName').show();
 		
@@ -46,12 +47,18 @@ jQuery(document).ready( function(){
 		$('#usernameWrap input').removeClass('form-error');				
 		$('#response').remove();
 		$('#usernameWrap').removeClass("error");
-		  
+		*/
 		
 		var ttm;
+		var ttm3;
 		ttm = $(this).attr('value');
-		ttm = ttm.replace(/([^a-z0-9])/ig,'');
-		$(this).attr({value:ttm});
+		alert(ttm);
+		ttm3 = ttm.replace(/([^a-z0-9])/ig,'');
+		if ( ttm !== ttm3 ){
+			//alert(ttm3);
+			//return false;
+		}
+		$(this).attr({value:ttm3});
 		if( ttm.length !== 0 ) {
 			$('#yourUrl span').html( ttm ).css("color","green");
 		}else{
@@ -80,7 +87,7 @@ jQuery(document).ready( function(){
 					      "json"
           	);
           	*/
-          	  
+          	  /*
 							$.ajax({
 									type: "POST",
 									url: path+"/users/userNameCheck/",
@@ -108,7 +115,7 @@ jQuery(document).ready( function(){
 
 									
 							});
-							
+							*/
 
         });
 
