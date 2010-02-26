@@ -37,8 +37,15 @@ jQuery(document).ready( function(){
 	});	
 	
 	
-	$('#UserUsername').keypress( function() {
-		
+	$('#UserUsername').keypress( function(e) {
+	
+	  var chr = (String.fromCharCode(e.which));
+	  rexp = /([^a-z0-9])/; 
+	  if( rexp.test(chr) ) {
+	    return false;
+	  } 
+
+		//alert(document.createTextNode(c));
 		/*
 		$('#nameFormTip').hide();	
 		$('#checkName').show();
@@ -50,15 +57,12 @@ jQuery(document).ready( function(){
 		*/
 		
 		var ttm;
-		var ttm3;
+
 		ttm = $(this).attr('value');
-		alert(ttm);
-		ttm3 = ttm.replace(/([^a-z0-9])/ig,'');
-		if ( ttm !== ttm3 ){
-			//alert(ttm3);
-			//return false;
-		}
-		$(this).attr({value:ttm3});
+		//alert(ttm);
+		//ttm3 = ttm.replace(/([^a-z0-9])/ig,'');
+
+		//$(this).attr({value:ttm3});
 		if( ttm.length !== 0 ) {
 			$('#yourUrl span').html( ttm ).css("color","green");
 		}else{
