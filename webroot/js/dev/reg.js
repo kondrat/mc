@@ -38,10 +38,10 @@ jQuery(document).ready( function(){
 	
 	
 	$('#UserUsername').keypress( function(e) {
-	
+		//alert(e.which);
 	  var chr = (String.fromCharCode(e.which));
-	  rexp = /([^a-z0-9])/; 
-	  if( rexp.test(chr) ) {
+	  rexp = /([^a-zA-Z0-9])/; 
+	  if( rexp.test(chr) && e.which !== 8 ) {
 	    return false;
 	  } 
 
@@ -59,10 +59,9 @@ jQuery(document).ready( function(){
 		var ttm;
 
 		ttm = $(this).attr('value');
-		//alert(ttm);
-		//ttm3 = ttm.replace(/([^a-z0-9])/ig,'');
-
-		//$(this).attr({value:ttm3});
+		if ( e.which !== 8 ) {
+			ttm = ttm+chr;
+		}
 		if( ttm.length !== 0 ) {
 			$('#yourUrl span').html( ttm ).css("color","green");
 		}else{
